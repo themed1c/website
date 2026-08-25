@@ -40,6 +40,13 @@ export async function POST({ request, locals }) {
       console.log('melody upstream status', upstream.status);
       return json({ ok: false }, 502);
     }
+    // Apps Script answers HTTP 200 even when it refuses; the real
+    // verdict is in the JSON body.
+    const verdict = await upstream.json().catch(() => null);
+    if (!verdict || verdict.ok !== true) {
+      console.log('melody upstream rejected', JSON.stringify(verdict));
+      return json({ ok: false }, 502);
+    }
   } catch (err) {
     console.log('melody upstream error', String(err));
     return json({ ok: false }, 502);
