@@ -13,15 +13,12 @@ Anything here that departs from `README.md` is recorded, not silently applied.
 | Play counts | Keep the README figures (47.2K / 27.5K) even though live counts drift | 2026-08-25 |
 | Form pending / error states | **Approved and built.** Pending: button dims and reads "Sending...". Error: one muted line under the form ("Something went wrong. Try again."), cleared on retry. No new colours or components. | 2026-08-25 |
 | Mobile layout | **Approved and built out.** Client asked for a full smartphone pass. All of it stays in the one `@media (max-width:700px)` block at the bottom of `src/styles/global.css`: single-column collapse, 48/36px rhythm, full-width covers, wrapping melody form, 16px input font (stops iOS focus zoom), taller nav tap targets. | 2026-08-25 |
+| Artwork page copy | Confirmed as written ("hey", "*subject to change"). Closes README open question #5. | 2026-08-25 |
+| Melody list backend | **Live and verified.** Apps Script web app bound to the private "Website Emails for Mels" Sheet; Worker holds the URL + shared secret as encrypted secrets. The subscribe route checks the script's JSON verdict, not just HTTP status (Apps Script answers 200 even on refusal). | 2026-08-25 |
 
 ## Still open
 
-1. **Form pending / error states** - do not exist in the design. README says
-   flag rather than invent. Current stubs: button drops to 55% opacity while
-   in flight; on network failure it silently re-enables with no message.
-   Both need a real design.
-2. **Artwork page copy** - "hey" and "*subject to change" ship as written.
-   README open question #5 asks for confirmation.
+Nothing. Every README open question is resolved.
 
 ## Deliberate departures from the prototype
 
