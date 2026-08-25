@@ -9,24 +9,17 @@ Anything here that departs from `README.md` is recorded, not silently applied.
 | Store "Coming soon" size | **12px** (design capture said 13px; client overrode) | 2026-08-24 |
 | Track cover sourcing | Self-host at 1080x1080 via `scripts/fetch-covers.sh` | 2026-08-24 |
 | Design direction | White/coral editorial. Supersedes the earlier "Amber Console" concept. | 2026-08-24 |
+| YouTube URL | `https://www.youtube.com/@themed1c` (closes README open question #1) | 2026-08-25 |
+| Play counts | Keep the README figures (47.2K / 27.5K) even though live counts drift | 2026-08-25 |
+| Mobile layout | **Approved and built out.** Client asked for a full smartphone pass. All of it stays in the one `@media (max-width:700px)` block at the bottom of `src/styles/global.css`: single-column collapse, 48/36px rhythm, full-width covers, wrapping melody form, 16px input font (stops iOS focus zoom), taller nav tap targets. | 2026-08-25 |
 
 ## Still open
 
-1. **YouTube URL** - `src/data/site.js` > `listen[1].href` is `'#'`.
-   README open question #1. One-line fix once supplied.
-2. **Play counts** - displayed values are the README figures (47.2K / 27.5K).
-   Live counts on 2026-08-24 were 47,278 and **27,567**, so hopeurhappynow
-   now rounds to 27.6K. Not changed without a decision.
-3. **Mobile layout** - implemented per the README recommendation but
-   **never approved**. All of it is in one `@media (max-width:700px)` block
-   at the bottom of `src/styles/global.css`: single-column collapse, 48px
-   section rhythm, `white-space:nowrap` dropped from the War$Dogs title.
-   Revise or delete that block wholesale.
-4. **Form pending / error states** - do not exist in the design. README says
+1. **Form pending / error states** - do not exist in the design. README says
    flag rather than invent. Current stubs: button drops to 55% opacity while
    in flight; on network failure it silently re-enables with no message.
    Both need a real design.
-5. **Artwork page copy** - "hey" and "*subject to change" ship as written.
+2. **Artwork page copy** - "hey" and "*subject to change" ship as written.
    README open question #5 asks for confirmation.
 
 ## Deliberate departures from the prototype

@@ -43,8 +43,8 @@ export const recentKit = {
 
 export const listen = [
   { label: 'Spotify', href: 'https://open.spotify.com/artist/3niYBKyr8or30uBpAW4CyA' },
-  // TODO(client): placeholder. README open question #1 - needs a real URL.
-  { label: 'YouTube', href: '#' },
+  // Client-supplied 2026-08-25 (closes README open question #1).
+  { label: 'YouTube', href: 'https://www.youtube.com/@themed1c' },
   { label: 'SoundCloud', href: 'https://soundcloud.com/med1c' },
 ];
 

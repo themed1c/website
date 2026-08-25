@@ -467,14 +467,14 @@ a.product__title:hover {
 }
 
 /* --- Responsive ----------------------------------------------------
-   NOT IN THE ORIGINAL DESIGN. This implements the README's
-   recommendation, which is flagged as needing client approval.
-   Everything mobile-specific lives in this one block so it is easy
-   to revise or remove wholesale.
+   Client-approved 2026-08-25: mobile must be fully built and look
+   good on smartphones. Everything mobile-specific lives in this one
+   block so it is easy to revise wholesale.
    ------------------------------------------------------------------- */
 @media (max-width: 700px) {
   :root {
     --rhythm-section: 48px;
+    --rhythm-grid: 36px;
   }
 
   .split,
@@ -486,8 +486,20 @@ a.product__title:hover {
     gap: 48px;
   }
 
+  /* Two stacked stat blocks read as one group, not two sections. */
+  .split.stats {
+    gap: 28px;
+  }
+
+  /* Stacked figures need more separation than the desktop 20px
+     column gap, or each caption crowds the next cover. */
+  .grid-2 {
+    gap: 36px;
+  }
+
   .main {
     padding-top: 48px;
+    padding-bottom: 72px;
   }
 
   /* Spec: the nowrap must be dropped on narrow screens. */
@@ -499,8 +511,39 @@ a.product__title:hover {
     gap: 24px;
   }
 
+  /* Covers fill the column on phones instead of stopping at the
+     desktop 280px sidebar width. */
+  .track__box,
+  .track__meta {
+    max-width: none;
+  }
+
   .melody-form {
     max-width: none;
+    flex-wrap: wrap;
+  }
+
+  /* 16px minimum stops iOS Safari from zooming the page when the
+     field gets focus. The min-width makes the button wrap onto its
+     own full-width row on very narrow phones instead of squeezing
+     the field. */
+  .melody-form input[type='email'] {
+    font-size: 16px;
+    min-width: 200px;
+  }
+
+  .melody-form button {
+    flex: 1;
+  }
+
+  /* Larger touch targets on the nav tabs. */
+  .nav__tab {
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+
+  .footer {
+    margin-top: 64px;
   }
 }
 
