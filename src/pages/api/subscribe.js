@@ -36,8 +36,12 @@ export async function POST({ request, locals }) {
         secret: env.MELODY_SHARED_SECRET,
       }),
     });
-    if (!upstream.ok) return json({ ok: false }, 502);
-  } catch {
+    if (!upstream.ok) {
+      console.log('melody upstream status', upstream.status);
+      return json({ ok: false }, 502);
+    }
+  } catch (err) {
+    console.log('melody upstream error', String(err));
     return json({ ok: false }, 502);
   }
 
