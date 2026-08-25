@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import { artwork } from '../data/site.js';
+---
+
+<Base title="Artwork — themed1c">
+  <div class="title-row">
+    <h1 class="h1 h1--sub">Artwork</h1>
+    <span class="note">*subject to change</span>
+  </div>
+
+  <p class="kicker">hey</p>
+
+  <div class="grid-2 art">
+    {
+      artwork.map((item) => (
+        <figure>
+          <Cover src={item.src} alt={item.caption.replace(/"/g, '')} />
+          <figcaption>{item.caption}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</Base>

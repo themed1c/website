@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import {
+  profile, stats, credits, recentKit, listen, tracks, footer,
+} from '../data/site.js';
+---
+
+<Base title="themed1c — producer, florida">
+  <h1 class="h1">{profile.name}</h1>
+  <p class="kicker">{profile.kicker}</p>
+  <p class="bio">{profile.bio}</p>
+
+  <div class="split stats">
+    {
+      stats.map((stat) => (
+        <div>
+          <div class="stat__number">{stat.number}</div>
+          <div class="stat__label">{stat.label}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="split" style="margin-top:var(--rhythm-section);align-items:start">
+    <div>
+      <h2 class="label">Worked with</h2>
+      <ul class="credits">
+        {
+          credits.map((credit) => (
+            <li>
+              {credit.href ? (
+                <a href={credit.href} target="_blank" rel="noreferrer noopener">
+                  {credit.name}
+                </a>
+              ) : (
+                <span class="credits__more">{credit.name}</span>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="label">Recent kit</h2>
+      <Cover
+        class="kit__box"
+        src={recentKit.cover}
+        alt={recentKit.alt}
+        href={recentKit.href}
+        label="Open on Sellfy"
+      />
+      <a
+        class="kit__caption"
+        href={recentKit.href}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <span class="kit__title">{recentKit.title}</span>
+        <span class="kit__meta">
+          {recentKit.platform} <span class="arrow">↗</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <h2 class="label label--section">Listen</h2>
+  <div class="listen">
+    {
+      listen.map((item) => (
+        <a
+          href={item.href}
+          target={item.href === '#' ? undefined : '_blank'}
+          rel={item.href === '#' ? undefined : 'noreferrer noopener'}
+        >
+          {item.label} <span class="arrow">↗</span>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="split tracks">
+    {
+      tracks.map((track) => (
+        <div>
+          <Cover
+            class="track__box"
+            src={track.cover}
+            alt={track.alt}
+            href={track.href}
+            label="Open on SoundCloud"
+          />
+          <a
+            class="track__meta"
+            href={track.href}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <span>{track.plays}</span>
+            <span class="track__platform">{track.platform}</span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2 class="label label--section">Contact</h2>
+  <p class="contact">
+    <a href={`mailto:${profile.email}`}>{profile.email}</a>
+  </p>
+  <p class="contact">
+    <a href={profile.instagram} target="_blank" rel="noreferrer noopener">
+      {profile.instagramLabel}
+    </a>
+  </p>
+
+  <p class="footer">{footer}</p>
+</Base>

@@ -1,0 +1,19 @@
+---
+/** Square cover box. Replaces the prototype's <image-slot>. */
+const { src, alt, href, label, class: className = '' } = Astro.props;
+---
+
+<div class={`cover ${className}`}>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {
+    href && (
+      <a
+        class="cover__link"
+        href={href}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label={label}
+      />
+    )
+  }
+</div>
