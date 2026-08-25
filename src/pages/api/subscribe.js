@@ -1,25 +1,12 @@
-/**
- * POST /api/subscribe
- *
- * Same-origin endpoint for the melody form. Holds the Apps Script URL and
- * shared secret as Cloudflare secrets so neither ever reaches the browser.
- *
- * Required environment (Pages > Settings > Variables and Secrets):
- *   MELODY_SCRIPT_URL     https://script.google.com/macros/s/AKfy.../exec
- *   MELODY_SHARED_SECRET  same value as the Apps Script property
- *
- * Both must be created as Secrets, not plaintext variables.
- */
+export const prerender = false;
 
-export async function onRequestPost(context) {
-  const { request, env } = context;
+export async function POST({ request, locals }) {
+  const env = locals?.runtime?.env ?? {};
 
   // Reject cross-origin posts. Only our own pages should reach this.
   const origin = request.headers.get('Origin');
   const host = request.headers.get('Host');
-  if (origin && new URL(origin).host !== host) {
-    return json({ ok: false }, 403);
-  }
+  if (origin && new URL(origin).host !== host) return json({ ok: false }, 403);
 
   let body;
   try {
@@ -34,8 +21,10 @@ export async function onRequestPost(context) {
   }
 
   // Honeypot. Return success so bots learn nothing.
-  if (body.website) {
-    return json({ ok: true });
+  if (body.website) return json({ ok: true });
+
+  if (!env.MELODY_SCRIPT_URL || !env.MELODY_SHARED_SECRET) {
+    return json({ ok: false, error: 'not_configured' }, 503);
   }
 
   try {
@@ -47,10 +36,7 @@ export async function onRequestPost(context) {
         secret: env.MELODY_SHARED_SECRET,
       }),
     });
-
-    if (!upstream.ok) {
-      return json({ ok: false }, 502);
-    }
+    if (!upstream.ok) return json({ ok: false }, 502);
   } catch {
     return json({ ok: false }, 502);
   }
@@ -58,7 +44,7 @@ export async function onRequestPost(context) {
   return json({ ok: true });
 }
 
-export function onRequest() {
+export function GET() {
   return json({ ok: false }, 405);
 }
 

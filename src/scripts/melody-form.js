@@ -1,5 +1,5 @@
 /**
- * Store page — melody list form.
+ * Store page - melody list form.
  *
  * Posts same-origin to /api/subscribe. The browser never sees the Apps
  * Script URL or the shared secret; the Cloudflare Function holds both.
@@ -42,7 +42,7 @@ export function initMelodyForm(root = document) {
     }
 
     if (!ok) {
-      // No error state exists in the design — flagged, not invented.
+      // No error state exists in the design - flagged, not invented.
       button.disabled = false;
       delete button.dataset.pending;
       return;

@@ -16,7 +16,7 @@ browser  --POST /api/subscribe-->  Cloudflare Function  --POST /exec-->  Apps Sc
   permission to write to your private Sheet. Visitors are never asked to
   sign in and never gain any access themselves.
 - The web app's "Anyone" access setting exposes the **endpoint**, not the
-  Sheet. And that endpoint has no read path — `doPost` only appends,
+  Sheet. And that endpoint has no read path - `doPost` only appends,
   `doGet` returns `{"ok":true}` and nothing else.
 - The `/exec` URL and shared secret live only in Cloudflare secrets, so
   they never appear in the site's page source.
@@ -33,7 +33,7 @@ openssl rand -hex 32
 
 ### 2. Google Sheet + Apps Script
 
-1. Create a Sheet. Leave sharing as-is — private to you.
+1. Create a Sheet. Leave sharing as-is - private to you.
 2. **Extensions > Apps Script**. Paste in `Code.gs`. Save.
 3. **Project Settings > Script properties > Add script property**
    - Property: `MELODY_SHARED_SECRET`
@@ -41,7 +41,7 @@ openssl rand -hex 32
 4. **Deploy > New deployment > Web app**
    - Execute as: **Me**
    - Who has access: **Anyone**
-5. Authorize. Google warns that the app is unverified — expected for your
+5. Authorize. Google warns that the app is unverified - expected for your
    own script. Advanced > Go to (project) > Allow.
 6. Copy the deployment URL ending in `/exec`.
 
@@ -74,7 +74,7 @@ Include `melody-form.js` on the Store page. The form markup needs:
 ```
 
 The `website` input is the honeypot. Keep it off-screen, never
-`display:none` — some bots skip hidden fields.
+`display:none` - some bots skip hidden fields.
 
 ## Verify
 
@@ -96,7 +96,7 @@ new deployment, so the `/exec` URL stays the same.
 
 Someone reading the page source can find `/api/subscribe` and POST junk
 emails to it. They cannot read the list, reach the Sheet, or learn the
-Apps Script URL — the worst case is spam rows you delete.
+Apps Script URL - the worst case is spam rows you delete.
 
 If that starts happening, add Cloudflare Turnstile to the form and verify
 the token inside the Function. It is free and does not need a code change

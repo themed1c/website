@@ -1,6 +1,6 @@
 /**
  * All page content lives here so copy, links and numbers are edited in
- * one place. Values transcribed verbatim from README.md — do not
+ * one place. Values transcribed verbatim from README.md - do not
  * paraphrase or invent replacements.
  */
 
@@ -43,7 +43,7 @@ export const recentKit = {
 
 export const listen = [
   { label: 'Spotify', href: 'https://open.spotify.com/artist/3niYBKyr8or30uBpAW4CyA' },
-  // TODO(client): placeholder. README open question #1 — needs a real URL.
+  // TODO(client): placeholder. README open question #1 - needs a real URL.
   { label: 'YouTube', href: '#' },
   { label: 'SoundCloud', href: 'https://soundcloud.com/med1c' },
 ];
@@ -70,7 +70,7 @@ export const tracks = [
   },
 ];
 
-/** Content-driven — the grid grows by adding entries here. */
+/** Content-driven - the grid grows by adding entries here. */
 export const artwork = [
   { caption: '"fruity limiter"', src: '/uploads/Fruity_Limiter_1.jpg' },
   { caption: '"dog"', src: '/uploads/Dog.jpg' },

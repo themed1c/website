@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------
-   Design tokens — transcribed from README.md "Design Tokens".
+   Design tokens - transcribed from README.md "Design Tokens".
    Do not invent values here. Every hex and size below appears in
    the handoff spec.
    --------------------------------------------------------------- */
@@ -452,7 +452,7 @@ a.product__title:hover {
   border-color: var(--accent);
 }
 
-/* Pending state is NOT in the design — see DECISIONS.md. Deliberately
+/* Pending state is NOT in the design - see DECISIONS.md. Deliberately
    minimal so it reads as "in progress" without inventing a look. */
 .melody-form button[data-pending] {
   opacity: 0.55;

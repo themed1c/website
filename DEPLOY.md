@@ -51,5 +51,5 @@ See `melody-list/SETUP.md` for the Google Sheet half.
 1. All three routes load: `/`, `/artwork`, `/store`.
 2. Active tab shows the coral underline on each.
 3. Submit the melody form once; confirm the row lands in the Sheet.
-4. View source on `/store` and search `script.google.com` — zero hits.
+4. View source on `/store` and search `script.google.com` - zero hits.
 5. Resize to 375px wide and confirm the single-column collapse.

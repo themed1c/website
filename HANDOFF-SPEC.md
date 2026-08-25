@@ -4,22 +4,22 @@
 A three-page personal site for **themed1c**, a music producer based in Florida who also
 draws. The site is an editorial, single-column portfolio:
 
-1. **Overview** — name, one-line bio, play-count stats, credits list, most recent sample
+1. **Overview** - name, one-line bio, play-count stats, credits list, most recent sample
    kit, streaming links, two featured tracks, contact.
-2. **Artwork** — a square 2-up grid of hand-drawn images with lowercase quoted captions.
-3. **Store** — a 2-up grid of sample kits (one live, one "Coming soon") plus a small
+2. **Artwork** - a square 2-up grid of hand-drawn images with lowercase quoted captions.
+3. **Store** - a 2-up grid of sample kits (one live, one "Coming soon") plus a small
    email-capture form for melody requests.
 
 All three pages share one persistent tab bar as the only navigation.
 
 ## About the Design Files
-The files under `design/` are **design references created in HTML** — prototypes that show
+The files under `design/` are **design references created in HTML** - prototypes that show
 the intended look, copy, and behavior. They are not production code to lift directly: they
 depend on a proprietary streaming-component runtime (`support.js`, the `<x-dc>` /
 `<sc-if>` tags, `style-hover` attributes) that does not exist outside this design tool.
 
 The task is to **recreate these designs in the target codebase's existing environment**
-(React/Next, Vue, Astro, plain HTML+CSS — whatever is already there) using its established
+(React/Next, Vue, Astro, plain HTML+CSS - whatever is already there) using its established
 patterns, routing, and component conventions. If no codebase exists yet, this is a small
 static marketing site: any modern static framework (Next.js/Astro/plain HTML) is
 appropriate; three routes and one shared layout is the whole app.
@@ -34,7 +34,7 @@ Translation notes:
 ## Fidelity
 **High-fidelity.** Colors, typography, spacing, and copy are final and should be matched
 closely. Every value used is listed in *Design Tokens* below. Content is real (real artist
-links, real play counts, real product URLs) — do not paraphrase or invent replacements.
+links, real play counts, real product URLs) - do not paraphrase or invent replacements.
 
 ## Shared shell (all three pages)
 
@@ -56,7 +56,7 @@ links, real play counts, real product URLs) — do not paraphrase or invent repl
 ### Content column
 `padding:76px 0 96px` under the nav on every page.
 
-## Screen 1 — Overview (`ProducerSite.dc.html`)
+## Screen 1 - Overview (`ProducerSite.dc.html`)
 
 **Purpose:** establish who themed1c is, prove reach, link out to music and the kit.
 
@@ -65,13 +65,13 @@ Layout is a single 660px column; several rows use
 
 Blocks, top to bottom:
 
-1. **H1 "themed1c"** — `clamp(38px,5.6vw,58px)`, weight 600, line-height 1.05,
+1. **H1 "themed1c"** - `clamp(38px,5.6vw,58px)`, weight 600, line-height 1.05,
    letter-spacing `-0.028em`, margin 0.
-2. **Kicker "producer: florida"** — Hanken Grotesk 14px/500, `letter-spacing:0.01em`,
+2. **Kicker "producer: florida"** - Hanken Grotesk 14px/500, `letter-spacing:0.01em`,
    `#8A8A8A`, `margin-top:14px`.
-3. **Bio** — 20px, line-height 1.6, `#3A3A3A`, `margin-top:26px`. Exact copy:
+3. **Bio** - 20px, line-height 1.6, `#3A3A3A`, `margin-top:26px`. Exact copy:
    `> a million plays across all platforms, with another 150k from my own songs / production. I also make stupid drawings.`
-4. **Stats row** (`margin-top:52px`, the 1fr/280px grid) — two cells:
+4. **Stats row** (`margin-top:52px`, the 1fr/280px grid) - two cells:
    - `1M+` / "plays across tracks I produced"
    - `150K+` / "plays on my own releases"
    Number: 32px, weight 600, `letter-spacing:-0.02em`. Label: Hanken Grotesk 14px/400,
@@ -83,12 +83,12 @@ Blocks, top to bottom:
      22px, weight 500, `letter-spacing:-0.015em`, color `#161616`,
      `border-bottom:1px solid transparent`; on hover the border becomes `#FF5C00`.
      Items and links (all `target="_blank" rel="noreferrer noopener"`):
-     - dom corleo — https://open.spotify.com/artist/6nFBSlEb2tkIOH3YtIIw6F
-     - kevin pollari — https://open.spotify.com/artist/4A55B07fj8Dwb525T2vlqJ
-     - 8485 — https://open.spotify.com/artist/3LwiPwIJNshV4ItekGcIMo
-     - bruhmanegod — https://open.spotify.com/artist/4jKJcl7HTKV6FXKizgJiaY
-     - capoxxo — https://open.spotify.com/artist/4lDzMjsz7xLw4CFmfWJmWJ
-     - "and more" — not a link, color `#8A8A8A`.
+     - dom corleo - https://open.spotify.com/artist/6nFBSlEb2tkIOH3YtIIw6F
+     - kevin pollari - https://open.spotify.com/artist/4A55B07fj8Dwb525T2vlqJ
+     - 8485 - https://open.spotify.com/artist/3LwiPwIJNshV4ItekGcIMo
+     - bruhmanegod - https://open.spotify.com/artist/4jKJcl7HTKV6FXKizgJiaY
+     - capoxxo - https://open.spotify.com/artist/4lDzMjsz7xLw4CFmfWJmWJ
+     - "and more" - not a link, color `#8A8A8A`.
    - Recent kit card (280px column): square box, `aspect-ratio:1/1`,
      `border:1px solid #E4E4E4`, `overflow:hidden`, cover image
      `uploads/WARDOGS_FINAL_COVER-01.jpg` at `object-fit:cover`; the whole box is a link to
@@ -100,34 +100,34 @@ Blocks, top to bottom:
    flex-wrap:wrap; margin-top:20px`, each 22px/500, `letter-spacing:-0.015em`, `#161616`,
    with a `#FF5C00` `↗`:
    - Spotify → https://open.spotify.com/artist/3niYBKyr8or30uBpAW4CyA
-   - YouTube → **placeholder `#` — needs a real URL from the client**
+   - YouTube → **placeholder `#` - needs a real URL from the client**
    - SoundCloud → https://soundcloud.com/med1c
 7. **Two featured tracks** (`margin-top:44px`, same 1fr/280px grid). Each: 280px-max square
    cover (same 1px `#E4E4E4` border box) linking to the track, then a Hanken Grotesk 14px
    `#8A8A8A` meta row (`margin-top:12px`, `display:flex; gap:8px; align-items:baseline`)
    with play count left, `SoundCloud` pushed right via `margin-left:auto`, and a `#FF5C00` ↗.
-   - "dimb" — 47.2K plays — https://soundcloud.com/med1c/dimb —
+   - "dimb" - 47.2K plays - https://soundcloud.com/med1c/dimb -
      cover https://i1.sndcdn.com/artworks-GTJ9nWl6ScRUsLdy-tXYHtA-t500x500.jpg
-   - "hoperurhappynow" — 27.5K plays — https://soundcloud.com/med1c/hoperurhappynow —
+   - "hoperurhappynow" - 27.5K plays - https://soundcloud.com/med1c/hoperurhappynow -
      cover https://i1.sndcdn.com/artworks-JKiM6HZnW5vHynpl-y3ypiw-t500x500.jpg
-   (Titles are not displayed in the design — only play count + platform.)
+   (Titles are not displayed in the design - only play count + platform.)
 8. **"Contact"** section label at `margin-top:76px`; two lines at 22px/500,
    `letter-spacing:-0.015em`, color `#161616`, each with
    `border-bottom:2px solid #FF5C00; padding-bottom:2px`:
    - `thejitmed1c@gmail.com` → `mailto:thejitmed1c@gmail.com` (`margin-top:20px`)
    - `@themed1c on instagram` → https://www.instagram.com/themed1c/ (`margin-top:12px`)
-9. **Footer** — `margin-top:96px`, `padding-top:24px`, `border-top:1px solid #EAEAEA`,
+9. **Footer** - `margin-top:96px`, `padding-top:24px`, `border-top:1px solid #EAEAEA`,
    Hanken Grotesk 13px, `#A6A6A6`, text `© 2026`.
 
-## Screen 2 — Artwork (`Artwork.dc.html`)
+## Screen 2 - Artwork (`Artwork.dc.html`)
 
 **Purpose:** show the producer's drawings.
 
-- **H1 "Artwork"** — `clamp(34px,4.8vw,48px)`, weight 600, line-height 1.05,
+- **H1 "Artwork"** - `clamp(34px,4.8vw,48px)`, weight 600, line-height 1.05,
   `letter-spacing:-0.028em`. Immediately after it, inline at `align-items:flex-start;
-  gap:12px`, a small note `*subject to change` — Hanken Grotesk 12px, `#A6A6A6`,
+  gap:12px`, a small note `*subject to change` - Hanken Grotesk 12px, `#A6A6A6`,
   `margin-top:6px`.
-- Kicker below: `hey` — Hanken Grotesk 14px/500, `#8A8A8A`, `margin-top:14px`.
+- Kicker below: `hey` - Hanken Grotesk 14px/500, `#8A8A8A`, `margin-top:14px`.
   (Intentionally casual; keep as-is unless the client changes it.)
 - **Grid**: `repeat(2,minmax(0,1fr))`, `gap:20px`, `margin-top:44px`. Each item is a
   `<figure>` (margin 0) containing a square `aspect-ratio:1/1` box with
@@ -135,28 +135,28 @@ Blocks, top to bottom:
   `<figcaption>` at `margin-top:10px`, Hanken Grotesk 13px/500, `letter-spacing:0.01em`,
   `#8A8A8A`.
 - Items in order (captions are lowercase and quoted, exactly as written):
-  1. `"fruity limiter"` — `uploads/Fruity Limiter 1.jpg`
-  2. `"dog"` — `uploads/Dog.jpg`
-  3. `"andrews computer"` — `uploads/AJ the Freak.jpg`
-  4. `"gokami's keyboard"` — `uploads/gokami evil keyboard.png`
+  1. `"fruity limiter"` - `uploads/Fruity Limiter 1.jpg`
+  2. `"dog"` - `uploads/Dog.jpg`
+  3. `"andrews computer"` - `uploads/AJ the Freak.jpg`
+  4. `"gokami's keyboard"` - `uploads/gokami evil keyboard.png`
 - The grid is content-driven and will grow; implement it as a mapped list, not four
   hardcoded blocks.
 
-## Screen 3 — Store (`Store.dc.html`)
+## Screen 3 - Store (`Store.dc.html`)
 
 **Purpose:** sell sample kits and collect emails for melody sends.
 
-- **H1 "Store"** — same as the Artwork H1 scale (`clamp(34px,4.8vw,48px)`).
-- Kicker: `kits` — Hanken Grotesk 14px/500, `#8A8A8A`, `margin-top:14px`.
+- **H1 "Store"** - same as the Artwork H1 scale (`clamp(34px,4.8vw,48px)`).
+- Kicker: `kits` - Hanken Grotesk 14px/500, `#8A8A8A`, `margin-top:14px`.
 - **Product grid**: `repeat(2,minmax(0,1fr))`, `gap:20px`, `margin-top:44px`. Square cover
   box identical to the Artwork tile; caption at `margin-top:12px`.
-  1. **Glorida Vol. 1** — cover
+  1. **Glorida Vol. 1** - cover
      `uploads/Glorida_Final_Animation_first_frame_square_lossless.png`. Caption row is
      `display:flex; align-items:baseline; gap:10px`: title 18px/500,
      `letter-spacing:-0.015em`, `#161616`; then `Coming soon` pushed right
      (`margin-left:auto`) in Hanken Grotesk 12px/600, `letter-spacing:0.09em`, uppercase,
      `#A6A6A6`. Not clickable.
-  2. **War$Dogs: @1rott x @themed1c** — cover `uploads/WARDOGS_FINAL_COVER-01.jpg`; both
+  2. **War$Dogs: @1rott x @themed1c** - cover `uploads/WARDOGS_FINAL_COVER-01.jpg`; both
      cover and title link to https://1rott.sellfy.store/p/wardogs-the-multi-kit/ .
      Title 18px/500, `#161616`, hover `#FF5C00`, with a trailing `↗` always in `#FF5C00`.
 - **Email capture**: section label `Want my melodies? :)` (standard 12px uppercase label
@@ -176,18 +176,18 @@ Blocks, top to bottom:
 ## Interactions & Behavior
 
 - **Navigation:** three routes, full page loads in the prototype. Active tab = coral
-  underline. No mobile menu is designed — see *Responsive*.
+  underline. No mobile menu is designed - see *Responsive*.
 - **Hover:** the only hover treatments in the design are (a) nav tab color `#8A8A8A`→
   `#161616`, (b) credits-list coral bottom border appearing, (c) Store product title →
   `#FF5C00`, (d) Submit button fill → `#FF5C00`. No shadows, no scale, no lifts.
 - **Transitions:** none specified. If the codebase animates by default, keep it to a short
-  (~100–150ms) color transition; nothing longer.
+  (~100-150ms) color transition; nothing longer.
 - **Focus:** inputs darken their border to `#161616`. Add a visible keyboard focus ring for
   links/buttons per the codebase's a11y standard (the prototype omits one).
 - **Email form states:** idle → success only. There is **no** loading, error, or duplicate
   state in the design; if the real implementation posts to a backend, a pending state and
   an inline error line (reuse the 15px Hanken Grotesk paragraph style) will need to be
-  designed — flag it rather than inventing a look.
+  designed - flag it rather than inventing a look.
 - **External links** all open in a new tab with `rel="noreferrer noopener"`.
 - **Responsive:** the prototype is desktop-first at a fixed 660px column and is untested
   below ~700px. Recommended (needs confirmation): collapse every
@@ -199,13 +199,13 @@ Blocks, top to bottom:
 
 Only one piece of state exists in the whole design, on the Store page:
 
-- `email: string` — controlled input value.
-- `sent: boolean` — false shows the form, true shows the confirmation. One-way; never
+- `email: string` - controlled input value.
+- `sent: boolean` - false shows the form, true shows the confirmation. One-way; never
   resets in the design.
 
 The prototype persists submissions to `localStorage` under the key
 `themed1c-melody-list` (array of `{ email, at: ISO string }`). **That is prototype
-scaffolding, not intended behavior** — replace it with a real POST to whatever mailing-list
+scaffolding, not intended behavior** - replace it with a real POST to whatever mailing-list
 service the client uses.
 
 No data fetching anywhere else; all content is static except the two SoundCloud cover
@@ -239,30 +239,30 @@ Typography
 | List / link item | Space Grotesk | 22 / 500 | `-0.015em` |
 | Product title | Space Grotesk | 18 / 500 | `-0.015em` |
 | Kit title | Space Grotesk | 16 / 500 | `-0.01em` |
-| Field / confirmation | Hanken Grotesk | 15 / 400 | — |
-| Meta, captions | Hanken Grotesk | 13–14 / 400–500 | `0–0.01em` |
+| Field / confirmation | Hanken Grotesk | 15 / 400 | - |
+| Meta, captions | Hanken Grotesk | 13-14 / 400-500 | `0-0.01em` |
 | Section label | Hanken Grotesk | 12 / 600 uppercase | `0.11em` |
 | Tab / button | Hanken Grotesk | 13 / 600 uppercase | `0.09em` |
 
-Radius: **0 everywhere** — no rounded corners on any element, including inputs and buttons.
+Radius: **0 everywhere** - no rounded corners on any element, including inputs and buttons.
 Shadows: **none**. Borders are all 1px, except the 2px coral underlines on the active tab
 and the contact links.
 
 ## Assets
 
 In `design/uploads/` (client-supplied):
-- `Fruity Limiter 1.jpg` — drawing, "fruity limiter"
-- `Dog.jpg` — drawing, "dog"
-- `AJ the Freak.jpg` — drawing, "andrews computer"
-- `gokami evil keyboard.png` — drawing, "gokami's keyboard"
-- `WARDOGS_FINAL_COVER-01.jpg` — War$Dogs kit cover (used on Overview + Store)
-- `Glorida_Final_Animation_first_frame_square_lossless.png` — Glorida Vol. 1 cover
+- `Fruity Limiter 1.jpg` - drawing, "fruity limiter"
+- `Dog.jpg` - drawing, "dog"
+- `AJ the Freak.jpg` - drawing, "andrews computer"
+- `gokami evil keyboard.png` - drawing, "gokami's keyboard"
+- `WARDOGS_FINAL_COVER-01.jpg` - War$Dogs kit cover (used on Overview + Store)
+- `Glorida_Final_Animation_first_frame_square_lossless.png` - Glorida Vol. 1 cover
 
 Remote, hotlinked in the prototype (download and self-host in production):
 - https://i1.sndcdn.com/artworks-GTJ9nWl6ScRUsLdy-tXYHtA-t500x500.jpg
 - https://i1.sndcdn.com/artworks-JKiM6HZnW5vHynpl-y3ypiw-t500x500.jpg
 
-Fonts: Space Grotesk and Hanken Grotesk, Google Fonts. No icon set — the only glyphs are
+Fonts: Space Grotesk and Hanken Grotesk, Google Fonts. No icon set - the only glyphs are
 the literal characters `↗` and `>`. No logo exists yet.
 
 ## Files
@@ -272,8 +272,8 @@ design/
   ProducerSite.dc.html   Overview page
   Artwork.dc.html        Artwork page
   Store.dc.html          Store page (contains the only JS logic)
-  support.js             prototyping runtime — DO NOT port
-  image-slot.js          drag-drop image placeholder — replace with <img>
+  support.js             prototyping runtime - DO NOT port
+  image-slot.js          drag-drop image placeholder - replace with <img>
   uploads/               all client images
 ```
 
@@ -281,6 +281,6 @@ design/
 1. The Overview "YouTube" link is a placeholder `#`.
 2. Play counts (1M+, 150K+, 47.2K, 27.5K) are point-in-time and hardcoded.
 3. Where should the melody-request email actually go?
-4. Mobile layout was never designed — the recommendation above needs approval.
-5. Artwork page copy ("hey", "*subject to change") is deliberately informal — confirm it
+4. Mobile layout was never designed - the recommendation above needs approval.
+5. Artwork page copy ("hey", "*subject to change") is deliberately informal - confirm it
    ships that way.
