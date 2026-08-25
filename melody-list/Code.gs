@@ -1,5 +1,5 @@
 /**
- * themed1c — melody list capture (hardened)
+ * themed1c - melody list capture (hardened)
  * Bound to the private Google Sheet that stores signups.
  *
  * The Sheet stays private. This script runs as YOU ("Execute as: Me"),
@@ -60,7 +60,7 @@ function doPost(e) {
 
 /**
  * Deliberately returns nothing about the list. There is no read path in
- * this script — the endpoint can only append.
+ * this script - the endpoint can only append.
  */
 function doGet() {
   return json({ ok: true });
