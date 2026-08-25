@@ -466,6 +466,15 @@ a.product__title:hover {
   color: var(--ink);
 }
 
+/* Error state, client-approved 2026-08-25: one quiet line under the
+   form in the existing meta style. No new colours. */
+.melody-error {
+  margin: 10px 0 0;
+  font-family: var(--font-meta);
+  font-size: 14px;
+  color: var(--muted);
+}
+
 /* --- Responsive ----------------------------------------------------
    Client-approved 2026-08-25: mobile must be fully built and look
    good on smartphones. Everything mobile-specific lives in this one

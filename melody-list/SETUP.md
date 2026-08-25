@@ -47,18 +47,21 @@ openssl rand -hex 32
 
 ### 3. Cloudflare
 
-Drop `functions/api/subscribe.js` into your Pages project at
-`functions/api/subscribe.js`.
+The endpoint is the Astro API route `src/pages/api/subscribe.js`, already
+deployed with the Worker. It reads both values from the Worker's encrypted
+secrets at runtime.
 
-**Pages > Settings > Variables and Secrets**, add both as **Secret**
-(encrypted), not plaintext:
+From the repo root, with wrangler authenticated:
 
 ```
-MELODY_SCRIPT_URL     = https://script.google.com/macros/s/AKfy.../exec
-MELODY_SHARED_SECRET  = <same value as the script property>
+npx wrangler secret put MELODY_SCRIPT_URL
+npx wrangler secret put MELODY_SHARED_SECRET
 ```
 
-Add them to Production and Preview.
+Each command prompts for the value (the `/exec` URL and the shared secret
+respectively). Or use the dashboard: **Worker > Settings > Variables and
+Secrets**, type **Secret**, not plaintext. Secrets take effect on the next
+deploy.
 
 ### 4. Wire the form
 

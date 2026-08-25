@@ -11,6 +11,7 @@ Anything here that departs from `README.md` is recorded, not silently applied.
 | Design direction | White/coral editorial. Supersedes the earlier "Amber Console" concept. | 2026-08-24 |
 | YouTube URL | `https://www.youtube.com/@themed1c` (closes README open question #1) | 2026-08-25 |
 | Play counts | Keep the README figures (47.2K / 27.5K) even though live counts drift | 2026-08-25 |
+| Form pending / error states | **Approved and built.** Pending: button dims and reads "Sending...". Error: one muted line under the form ("Something went wrong. Try again."), cleared on retry. No new colours or components. | 2026-08-25 |
 | Mobile layout | **Approved and built out.** Client asked for a full smartphone pass. All of it stays in the one `@media (max-width:700px)` block at the bottom of `src/styles/global.css`: single-column collapse, 48/36px rhythm, full-width covers, wrapping melody form, 16px input font (stops iOS focus zoom), taller nav tap targets. | 2026-08-25 |
 
 ## Still open
