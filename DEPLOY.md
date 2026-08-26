@@ -5,8 +5,10 @@
 ```
 npm install
 ./scripts/fetch-covers.sh   # replaces the two placeholder track covers
-npm run dev                 # http://localhost:4321
+npm run dev                 # http://localhost:4321 (Astro dev server)
 npm run build               # -> dist/
+npm run preview             # build, then wrangler dev (the real Worker runtime)
+npm run check               # astro type diagnostics
 ```
 
 > `public/uploads/track-dimb.jpg` and `track-hopeurhappynow.jpg` currently
@@ -24,25 +26,33 @@ git remote add origin https://github.com/themed1c/website.git
 git push -u origin main
 ```
 
-## Cloudflare Pages
+## Cloudflare Workers
 
-Create the project from the repo (Workers & Pages > Create > Pages >
-Connect to Git):
+The site deploys as a **Worker** (not Pages). `wrangler.jsonc` is the
+config: static assets from `dist/`, server code from `dist/_worker.js/`,
+custom domains `themed1c.com` and `www.themed1c.com`.
 
-- Framework preset: **Astro**
-- Build command: `npm run build`
-- Build output directory: `dist`
-
-Then **Settings > Variables and Secrets**, add both as **Secret**
-(encrypted) for Production *and* Preview:
+Pushing to `main` triggers Workers Builds, which builds and deploys
+automatically. To deploy by hand:
 
 ```
-MELODY_SCRIPT_URL     = https://script.google.com/macros/s/.../exec
-MELODY_SHARED_SECRET  = <same value as the Apps Script property>
+npm run deploy        # astro build + wrangler deploy
 ```
 
-`functions/api/subscribe.js` deploys automatically as a Pages Function at
-`/api/subscribe`. No extra config.
+Secrets live on the Worker (dashboard: Worker > Settings > Variables and
+Secrets, type **Secret**), or from the CLI:
+
+```
+npx wrangler secret put MELODY_SCRIPT_URL
+npx wrangler secret put MELODY_SHARED_SECRET
+```
+
+Note: `wrangler secret put` deploys a new Worker version **immediately**.
+
+The API route is `src/pages/api/subscribe.js`, served at `/api/subscribe`
+by the Worker. `public/.assetsignore` keeps `dist/_worker.js` (the server
+code) and `dist/_routes.json` out of the public asset upload - deleting
+that file would publish the Worker source at a public URL, so leave it be.
 
 See `melody-list/SETUP.md` for the Google Sheet half.
 

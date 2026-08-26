@@ -4,9 +4,17 @@ export async function POST({ request, locals }) {
   const env = locals?.runtime?.env ?? {};
 
   // Reject cross-origin posts. Only our own pages should reach this.
+  // Origin can be the literal string "null" (sandboxed iframes) or
+  // garbage; anything unparsable counts as cross-origin, not a crash.
   const origin = request.headers.get('Origin');
   const host = request.headers.get('Host');
-  if (origin && new URL(origin).host !== host) return json({ ok: false }, 403);
+  if (origin) {
+    let originHost = null;
+    try {
+      originHost = new URL(origin).host;
+    } catch {}
+    if (originHost !== host) return json({ ok: false }, 403);
+  }
 
   let body;
   try {
@@ -14,14 +22,19 @@ export async function POST({ request, locals }) {
   } catch {
     return json({ ok: false }, 400);
   }
+  // JSON `null` parses without throwing but has no fields.
+  if (typeof body !== 'object' || body === null) {
+    return json({ ok: false }, 400);
+  }
+
+  // Honeypot first, before any validation, so bots get the same fake
+  // success no matter what else is wrong with their payload.
+  if (body.website) return json({ ok: true });
 
   const email = String(body.email || '').trim();
   if (!email || !email.includes('@') || email.length > 254) {
     return json({ ok: false }, 400);
   }
-
-  // Honeypot. Return success so bots learn nothing.
-  if (body.website) return json({ ok: true });
 
   if (!env.MELODY_SCRIPT_URL || !env.MELODY_SHARED_SECRET) {
     return json({ ok: false, error: 'not_configured' }, 503);
@@ -55,7 +68,9 @@ export async function POST({ request, locals }) {
   return json({ ok: true });
 }
 
-export function GET() {
+// Every method without its own handler (GET, PUT, DELETE, ...) gets the
+// endpoint's JSON 405 instead of falling through to the HTML 404.
+export function ALL() {
   return json({ ok: false }, 405);
 }
 

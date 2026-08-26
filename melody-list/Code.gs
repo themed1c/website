@@ -40,16 +40,26 @@ function doPost(e) {
       return json({ ok: false, error: 'invalid' });
     }
 
-    var sheet = getSheet();
-    var lastRow = sheet.getLastRow();
-    var existing = lastRow > 1
-      ? sheet.getRange(2, 1, lastRow - 1, 1).getValues().map(function (r) {
-          return String(r[0]).trim().toLowerCase();
-        })
-      : [];
-
-    if (existing.indexOf(email.toLowerCase()) === -1) {
-      sheet.appendRow([email, new Date().toISOString(), body.source || 'store']);
+    // Lock so two concurrent submissions of the same email cannot both
+    // pass the dedup check and double-append.
+    var lock = LockService.getScriptLock();
+    lock.waitLock(5000);
+    try {
+      var sheet = getSheet();
+      // Server-side search of column A only: O(1)-ish per submission
+      // instead of pulling the whole email column into memory.
+      // TextFinder is case-insensitive by default, matching the old
+      // toLowerCase() behaviour.
+      var existing = sheet
+        .getRange(1, 1, Math.max(sheet.getLastRow(), 1), 1)
+        .createTextFinder(email)
+        .matchEntireCell(true)
+        .findNext();
+      if (!existing) {
+        sheet.appendRow([email, new Date().toISOString(), body.source || 'store']);
+      }
+    } finally {
+      lock.releaseLock();
     }
 
     return json({ ok: true });

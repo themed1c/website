@@ -491,19 +491,16 @@ a.product__title:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .split {
-    gap: 48px;
-  }
-
   /* Two stacked stat blocks read as one group, not two sections. */
   .split.stats {
     gap: 28px;
   }
 
-  /* Stacked figures need more separation than the desktop 20px
-     column gap, or each caption crowds the next cover. */
+  /* Stacked figures follow the grid rhythm (36px here), giving more
+     separation than the desktop 20px column gap so each caption does
+     not crowd the next cover. */
   .grid-2 {
-    gap: 36px;
+    gap: var(--rhythm-grid);
   }
 
   .main {

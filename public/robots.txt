@@ -1,4 +1,7 @@
 # AI training / scraping crawlers: not welcome.
+# Snapshot of known crawlers as of 2026-08-25. New ones appear monthly;
+# refresh from https://github.com/ai-robots-txt/ai.robots.txt now and
+# then. Cloudflare's AI Crawl Control does the actual enforcing.
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: OAI-SearchBot

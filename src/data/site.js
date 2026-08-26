@@ -13,6 +13,7 @@ export const nav = [
 export const profile = {
   name: 'themed1c',
   kicker: 'producer: florida',
+  description: 'themed1c, producer, florida.',
   bio: '> a million plays across all platforms, with another 150k from my own songs / production. I also make stupid drawings.',
   email: 'thejitmed1c@gmail.com',
   instagram: 'https://www.instagram.com/themed1c/',
@@ -94,5 +95,12 @@ export const products = [
     alt: 'War$Dogs kit cover art',
   },
 ];
+
+/** Store page melody form copy (client-approved 2026-08-25). */
+export const melodyForm = {
+  sending: 'Sending...',
+  error: 'Something went wrong. Try again.',
+  thanks: 'thanks!',
+};
 
 export const footer = '© 2026';

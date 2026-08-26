@@ -60,8 +60,21 @@ npx wrangler secret put MELODY_SHARED_SECRET
 
 Each command prompts for the value (the `/exec` URL and the shared secret
 respectively). Or use the dashboard: **Worker > Settings > Variables and
-Secrets**, type **Secret**, not plaintext. Secrets take effect on the next
-deploy.
+Secrets**, type **Secret**, not plaintext.
+
+`wrangler secret put` deploys a new Worker version **immediately**. When
+rotating the shared secret, update the Apps Script property first, then
+the Cloudflare secret, so the two sides never disagree while live.
+
+For local testing (`npm run preview`), put the same two values in a
+`.dev.vars` file at the repo root (already gitignored):
+
+```
+MELODY_SCRIPT_URL=https://script.google.com/macros/s/.../exec
+MELODY_SHARED_SECRET=<the secret>
+```
+
+Without it, local submissions return 503 `not_configured` by design.
 
 ### 4. Wire the form
 
