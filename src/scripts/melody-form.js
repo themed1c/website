@@ -77,6 +77,6 @@ function showConfirmation(form) {
   const p = document.createElement('p');
   p.className = 'melody-confirmation';
   p.setAttribute('role', 'status');
-  p.textContent = "Got it. I'll send melodies to that address.";
+  p.textContent = 'thanks!';
   form.replaceWith(p);
 }
