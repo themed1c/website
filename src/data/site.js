@@ -82,8 +82,8 @@ export const artwork = [
 export const products = [
   {
     title: 'Glorida Vol. 1',
-    href: null,
-    status: 'Coming soon',
+    href: 'https://payhip.com/buy?s=1&cart_links%5B%5D=YO213&qty%5BYO213%5D=1',
+    status: 'On sale!',
     cover: '/uploads/Glorida_Final_Animation_first_frame_square_lossless.png',
     alt: 'Glorida Vol. 1 cover art',
   },
