@@ -16,7 +16,7 @@ import { products } from '../data/site.js';
             src={product.cover}
             alt={product.alt}
             href={product.href}
-            label={product.href ? `Open ${product.title} on Sellfy` : undefined}
+            label={product.href ? `Open ${product.title} on ${product.platform}` : undefined}
           />
           <figcaption class="product__caption">
             {product.href ? (

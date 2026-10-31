@@ -83,6 +83,7 @@ export const products = [
   {
     title: 'Glorida Vol. 1',
     href: 'https://payhip.com/buy?s=1&cart_links%5B%5D=YO213&qty%5BYO213%5D=1',
+    platform: 'Payhip',
     status: 'On sale!',
     cover: '/uploads/Glorida_Final_Animation_first_frame_square_lossless.png',
     alt: 'Glorida Vol. 1 cover art',
@@ -90,6 +91,7 @@ export const products = [
   {
     title: 'War$Dogs: @1rott x @themed1c',
     href: 'https://1rott.sellfy.store/p/wardogs-the-multi-kit/',
+    platform: 'Sellfy',
     status: null,
     cover: '/uploads/WARDOGS_FINAL_COVER01.jpg',
     alt: 'War$Dogs kit cover art',
